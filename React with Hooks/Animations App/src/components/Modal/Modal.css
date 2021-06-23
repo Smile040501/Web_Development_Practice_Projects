@@ -1,0 +1,112 @@
+.Modal {
+    position: fixed;
+    z-index: 200;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    top: 30%;
+    left: 25%;
+    width: 50%;
+    transition: all 0.3s ease-out;
+}
+
+.ModalOpen {
+    -webkit-animation: openModal 0.4s ease-out forwards;
+    animation: openModal 0.4s ease-out forwards;
+}
+
+.ModalClosed {
+    -webkit-animation: closeModal 1s ease-out forwards;
+    animation: closeModal 1s ease-out forwards;
+}
+
+.fade-slide-enter {
+}
+
+.fade-slide-enter-active {
+    -webkit-animation: openModal 0.4s ease-out forwards;
+    animation: openModal 0.4s ease-out forwards;
+}
+
+.fade-slide-exit {
+    -webkit-animation: closeModal 1s ease-out forwards;
+    animation: closeModal 1s ease-out forwards;
+}
+
+.fade-slide-exit-active {
+}
+
+@-webkit-keyframes openModal {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100vh);
+        transform: translateY(-100vh);
+    }
+    50% {
+        opacity: 0.8;
+        -webkit-transform: translateY(20%);
+        transform: translateY(20%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes openModal {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100vh);
+        transform: translateY(-100vh);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: translateY(90%);
+        transform: translateY(90%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@-webkit-keyframes closeModal {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.8;
+        -webkit-transform: translateY(60%);
+        transform: translateY(60%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-100vh);
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes closeModal {
+    0% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.8;
+        -webkit-transform: translateY(60%);
+        transform: translateY(60%);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(-100vh);
+        transform: translateY(-100vh);
+    }
+}
