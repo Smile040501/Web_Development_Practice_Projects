@@ -1,0 +1,16 @@
+<%- include("partials/header"); -%>
+
+<h1>Today weather in <%= cityName %></h1>
+<p>Weather: <%= weatherDescription %></p>
+<img src=" <%= imageURL %>" />
+<p>Temperature: <%= weatherTemperature %> °C</p>
+<p>Sunrise: <%= sunrise %></p>
+<p>Sunset: <%= sunset %></p>
+<p>Max Temperature: <%= weatherTemperatureMax %> °C</p>
+<p>Min Temperature: <%= weatherTemperatureMin %> °C</p>
+<br />
+<form action="/forecast" method="post">
+    <button type="submit">Check Weather for the Next 7 Days</button>
+</form>
+
+<%- include("partials/footer"); -%>

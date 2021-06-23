@@ -1,0 +1,34 @@
+<%- include("partials/header"); -%>
+
+  <% var i = 0; %>
+  <% dailyData.forEach(function(daily) { %>
+  <% if(i===0) { %>
+    <h1>Today:</h1>
+  <% } else if(i===1) { %>
+    <h1>Tomorrow:</h1>
+  <% } else { %>
+    <% const options = { year: "numeric", month: "long", day: "numeric" }; %>
+    <% let day = new Date(daily.dt*1000); %>
+    <h1><%= day.toLocaleDateString("en-Us", options) %>:</h1>
+  <% } %>
+  <% i++; %>
+
+  <% let sunriseTime = new Date(daily.sunrise*1000); %>
+  <% const sunrise = sunriseTime.getHours() + ":" + sunriseTime.getMinutes() + ":" + sunriseTime.getSeconds() + ""; %>
+  <p>Sunrise: <%= sunrise %></p>
+
+  <% let sunsetTime = new Date(daily.sunset*1000); %>
+  <% const sunset = sunsetTime.getHours() + ":" + sunsetTime.getMinutes() + ":" + sunsetTime.getSeconds() + ""; %>
+  <p>Sunset: <%= sunset %></p>
+
+  <p>Weather: <%= daily.weather[0].description %></p>
+  <% const imageURL = "http://openweathermap.org/img/wn/" + daily.weather[0].icon + "@2x.png"; %>
+  <img src="<%= imageURL %>" alt="weatherImage" />
+  <p>Max Temperature: <%= daily.temp.max %> °C</p>
+  <p>Min Temperature: <%= daily.temp.min %> °C</p>
+  <p>Day Temperature: <%= daily.temp.day %> °C</p>
+  <p>Night Temperature: <%= daily.temp.night %> °C</p>
+
+<% }); %>
+
+<%- include("partials/footer"); -%>

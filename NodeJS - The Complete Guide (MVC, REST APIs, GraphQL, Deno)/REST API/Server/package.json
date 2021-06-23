@@ -1,0 +1,29 @@
+{
+    "name": "rest-api",
+    "version": "1.0.0",
+    "description": "REST API Node.js course",
+    "main": "app.js",
+    "scripts": {
+        "test": "mocha",
+        "start": "nodemon app.js"
+    },
+    "author": "Mayank Singla",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "express-validator": "^6.10.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.12.6",
+        "multer": "^1.4.2",
+        "socket.io": "^4.0.1",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "chai": "^4.3.4",
+        "mocha": "^8.4.0",
+        "nodemon": "^2.0.7",
+        "sinon": "^11.1.1"
+    }
+}

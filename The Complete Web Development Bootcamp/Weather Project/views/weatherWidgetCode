@@ -1,0 +1,20 @@
+<div id="openweathermap-widget-1"></div>
+<script src="//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/d3.min.js"></script>
+<script>
+  window.myWidgetParam ? window.myWidgetParam : window.myWidgetParam = [];
+  window.myWidgetParam.push({
+    id: 1,
+    cityid: "<%= cityId %>",
+    appid: "<%= appId %>",
+    units: "metric",
+    containerid: "openweathermap-widget-1",
+  });
+  (function() {
+    let script = document.createElement("script");
+    script.async = true;
+    script.charset = "utf-8";
+    script.src = "//openweathermap.org/themes/openweathermap/assets/vendor/owm/js/weather-widget-generator.js";
+    let s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(script, s);
+  })();
+</script>

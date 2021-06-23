@@ -1,0 +1,21 @@
+<%- include("includes/head.ejs") %>
+</head>
+    <body style="text-align: center;">
+        <h1>Login Page</h1>
+        <form action="/login" method="POST">
+            Email: 
+            <input type="text" name="email" />
+            <br />
+            <br />
+            Password: 
+            <input type="password" name="password" />
+            <br />
+            <br />
+            <button>Login</button>
+            <a href="/signup">SignUp</a>
+            <br />
+            <br />
+            <a href="<%= googleLoginUrl %>">Login with Google</a>
+        </form>
+
+<%- include("includes/end.ejs") %>

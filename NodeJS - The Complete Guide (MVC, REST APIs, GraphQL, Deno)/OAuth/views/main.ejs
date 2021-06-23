@@ -1,0 +1,12 @@
+<%- include("includes/head.ejs") %>
+</head>
+    <body style="text-align: center;">
+        <h1>Main Page</h1>
+        <p>Email: <%= userEmail %></p>
+        <p>Type: <%= userType %></p>
+        <form action="/logout" method="POST">
+            <button>Logout</button>
+        </form>
+        
+
+<%- include("includes/end.ejs") %>
