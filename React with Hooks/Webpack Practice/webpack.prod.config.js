@@ -1,69 +1,114 @@
 const path = require("path");
-const autoprefixer = require("autoprefixer");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const safePostCssParser = require("postcss-safe-parser");
 
 module.exports = {
     mode: "production",
-    devtool: "cheap-module-source-map",
+
     entry: "./src/index.js",
+
     output: {
-        filename: "bundle.js",
-        path: path.resolve(__dirname, "dist"),
-        chunkFileName: "[id].js",
+        path: path.resolve(__dirname, "build"),
+        filename: "static/js/[name].[contenthash:8].js",
+        chunkFilename: "static/js/[name].[contenthash:8].chunk.js",
         publicPath: "",
+        assetModuleFilename: "static/media/[name].[hash:8].[ext]",
+        clean: true,
     },
+
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                terserOptions: {
+                    parse: { ecma: 8 },
+                    compress: { ecma: 5, comparisons: false, inline: 2 },
+                    mangle: { safari10: true },
+                    output: { ecma: 5, comments: false, ascii_only: true },
+                },
+            }),
+            new OptimizeCSSAssetsPlugin({
+                cssProcessorOptions: {
+                    parser: safePostCssParser,
+                    map: {
+                        // `inline: false` forces the sourcemap to be output into a
+                        // separate file
+                        inline: false,
+                        // `annotation: true` appends the sourceMappingURL to the end of
+                        // the css file, helping the browser find the sourcemap
+                        annotation: true,
+                    },
+                },
+                cssProcessorPluginOptions: {
+                    preset: ["default", { minifyFontValues: { removeQuotes: false } }],
+                },
+            }),
+        ],
+        splitChunks: {
+            chunks: "all",
+        },
+    },
+
     resolve: {
-        // will try to resolve the file imports with these extensions if not provided
         extensions: [".js", ".jsx"],
     },
+
+    devtool: "source-map",
+
     module: {
+        strictExportPresence: true,
         rules: [
             {
-                test: /\.js$/,
-                use: [{ loader: "babel-loader" }],
-                exclude: /node_modules/,
+                test: /\.(png|jpe?g|gif|bmp)$/i,
+                type: "asset",
             },
             {
-                test: /\.css$/,
+                test: /\.js$/i,
                 exclude: /node_modules/,
+                use: [{ loader: "babel-loader" }],
+            },
+            {
+                test: /\.css$/i,
+                exclude: [/node_modules/, /\.module\.css$/i],
                 use: [
-                    // Order matters
-                    { loader: "style-loader" },
-                    {
-                        loader: "css-loader",
-                        options: {
-                            importLoaders: 1,
-                            modules: true,
-                            localIdentName: "[name]__[local]__[hash:base64:5]",
-                        },
-                    },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            ident: "postcss",
-                            plugins: () => [
-                                autoprefixer({
-                                    browsers: ["> 1%", "last 2 versions"],
-                                }),
-                            ],
-                        },
-                    },
+                    { loader: MiniCssExtractPlugin.loader, options: {} },
+                    { loader: "css-loader" },
+                    { loader: "postcss-loader" },
                 ],
             },
             {
-                test: /\.(png|jpe?g|gif)$/,
-                // url-loader and file-loader
-                use: [{ loader: "url-loader?limit=8000&name=images/[name].[ext]" }],
+                test: /\.module\.css$/i,
+                exclude: /node_modules/,
+                use: [
+                    { loader: MiniCssExtractPlugin.loader },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: {
+                                localIdentName: "[name]__[local]__[hash:base64:5]",
+                            },
+                            importLoaders: 1,
+                        },
+                    },
+                    { loader: "postcss-loader" },
+                ],
             },
         ],
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: __dirname + "/src/index.html",
             filename: "index.html",
             inject: "body",
         }),
-        new webpack.optimize.UglifyJsPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "static/css/[name].[contenthash:8].css",
+            chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
+        }),
     ],
 };

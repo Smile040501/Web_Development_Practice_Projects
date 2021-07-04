@@ -1,62 +1,74 @@
 const path = require("path");
-const autoprefixer = require("autoprefixer");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: "development",
-    devtool: "cheap-module-eval-source-map",
+
     entry: "./src/index.js",
+
     output: {
-        filename: "bundle.js",
-        path: path.resolve(__dirname, "dist"),
-        chunkFileName: "[id].js",
+        path: path.resolve(__dirname, "build"),
+        filename: "static/js/bundle.js",
+        chunkFilename: "static/js/[name].chunk.js",
         publicPath: "",
+        assetModuleFilename: "static/media/[name].[hash:8].[ext]",
+        clean: true,
     },
+
     resolve: {
-        // will try to resolve the file imports with these extensions if not provided
         extensions: [".js", ".jsx"],
     },
+
+    devtool: "source-map",
+    devServer: {
+        contentBase: path.resolve(__dirname, "build"),
+        hot: true,
+        port: 3000,
+        writeToDisk: true,
+    },
+
     module: {
+        strictExportPresence: true,
         rules: [
             {
-                test: /\.js$/,
-                use: [{ loader: "babel-loader" }],
-                exclude: /node_modules/,
+                test: /\.(png|jpe?g|gif|bmp)$/i,
+                type: "asset",
             },
             {
-                test: /\.css$/,
+                test: /\.js$/i,
+                exclude: /node_modules/,
+                use: [{ loader: "babel-loader" }],
+            },
+            {
+                test: /\.css$/i,
+                exclude: [/node_modules/, /\.module\.css$/i],
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" },
+                    { loader: "postcss-loader" },
+                ],
+            },
+            {
+                test: /\.module\.css$/i,
                 exclude: /node_modules/,
                 use: [
-                    // Order matters
                     { loader: "style-loader" },
                     {
                         loader: "css-loader",
                         options: {
+                            modules: {
+                                localIdentName: "[name]__[local]__[hash:base64:5]",
+                            },
                             importLoaders: 1,
-                            modules: true,
-                            localIdentName: "[name]__[local]__[hash:base64:5]",
                         },
                     },
-                    {
-                        loader: "postcss-loader",
-                        options: {
-                            ident: "postcss",
-                            plugins: () => [
-                                autoprefixer({
-                                    browsers: ["> 1%", "last 2 versions"],
-                                }),
-                            ],
-                        },
-                    },
+                    { loader: "postcss-loader" },
                 ],
-            },
-            {
-                test: /\.(png|jpe?g|gif)$/,
-                // url-loader and file-loader
-                use: [{ loader: "url-loader?limit=8000&name=images/[name].[ext]" }],
             },
         ],
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             template: __dirname + "/src/index.html",

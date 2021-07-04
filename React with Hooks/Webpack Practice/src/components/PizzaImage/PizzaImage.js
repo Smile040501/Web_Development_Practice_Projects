@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./PizzaImage.css";
+import classes from "./PizzaImage.module.css";
 import PizzImage from "../../assets/pizza.jpg";
 
 export default function PizzaImage() {
