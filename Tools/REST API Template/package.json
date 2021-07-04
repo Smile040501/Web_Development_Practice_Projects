@@ -1,0 +1,34 @@
+{
+    "name": "rest-api-template",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm-run-all -p build:dev start:server",
+        "build:dev": "webpack --progress --color",
+        "start:server": "nodemon ./build/app.bundle.js",
+        "build": "webpack --config webpack.prod.config.js --progress --color"
+    },
+    "keywords": [],
+    "author": "Mayank Singla",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "latest",
+        "@babel/preset-env": "latest",
+        "babel-loader": "latest",
+        "nodemon": "latest",
+        "npm-run-all": "latest",
+        "terser-webpack-plugin": "latest",
+        "webpack": "latest",
+        "webpack-cli": "latest",
+        "webpack-node-externals": "latest"
+    },
+    "dependencies": {
+        "body-parser": "latest",
+        "core-js": "latest",
+        "express": "latest",
+        "jsonwebtoken": "latest",
+        "mongoose": "latest",
+        "regenerator-runtime": "latest"
+    }
+}
