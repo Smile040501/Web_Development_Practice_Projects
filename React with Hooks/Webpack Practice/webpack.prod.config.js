@@ -63,16 +63,16 @@ module.exports = {
         strictExportPresence: true,
         rules: [
             {
-                test: /\.(png|jpe?g|gif|bmp)$/i,
+                test: /\.(png|jpe?g|gif|bmp)$/,
                 type: "asset",
             },
             {
-                test: /\.js$/i,
+                test: /\.js$/,
                 exclude: /node_modules/,
                 use: [{ loader: "babel-loader" }],
             },
             {
-                test: /\.css$/i,
+                test: /\.css$/,
                 exclude: [/node_modules/, /\.module\.css$/i],
                 use: [
                     { loader: MiniCssExtractPlugin.loader, options: {} },
@@ -81,7 +81,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.module\.css$/i,
+                test: /\.module\.css$/,
                 exclude: /node_modules/,
                 use: [
                     { loader: MiniCssExtractPlugin.loader },

@@ -21,12 +21,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js?$/i,
+                test: /\.js?$/,
                 exclude: /node_modules/,
                 use: [{ loader: "babel-loader" }],
             },
             {
-                test: /\.(graphql|gql)$/i,
+                test: /\.(graphql|gql)$/,
                 exclude: /node_modules/,
                 use: [{ loader: "webpack-graphql-loader" }],
             },
