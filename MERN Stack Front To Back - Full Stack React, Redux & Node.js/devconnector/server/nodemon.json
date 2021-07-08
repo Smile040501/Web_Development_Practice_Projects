@@ -1,0 +1,11 @@
+{
+    "env": {
+        "DB_USER": "",
+        "DB_PASSWORD": "",
+        "DB_NAME": "devconnector",
+        "JWT_KEY": "~`!@#$%^&*()_+-={}[]:';,./<>?somesupersuperveryverylonglongthatwontgotleismysecretistobehappyalwaysandkeepsmiling~`!@#$%^&*()_+-={}[]:';,./<>?",
+        "GITHUB_CLIENT_ID": "",
+        "GITHUB_CLIENT_SECRET": ""
+    },
+    "watch": ["build/app.bundle.js"]
+}
