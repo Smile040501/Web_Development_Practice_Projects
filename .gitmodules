@@ -1,0 +1,6 @@
+[submodule "React with Hooks/burger-builder-app"]
+	path = React with Hooks/burger-builder-app
+	url = https://github.com/Smile040501/burger-builder-app.git
+[submodule "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)/node-shop-app"]
+	path = NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)/node-shop-app
+	url = https://github.com/Smile040501/node-shop-app.git
