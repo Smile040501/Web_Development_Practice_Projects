@@ -5,6 +5,7 @@ module.exports = (req, res, next) => {
     if (req.method === "OPTIONS") {
         return next();
     }
+
     try {
         const authHeader = req.get("Authorization");
         const token = authHeader.split(" ")[1];

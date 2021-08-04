@@ -1,0 +1,44 @@
+{
+    "name": "rest-api-template",
+    "version": "1.0.0",
+    "description": "My template for building REST APIs using Node.js & MongoDB with pre-built MVC architecture, security mechanisms, utilities, middleware, models, and webpack bundling config.",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./build/app.bundle.js",
+        "start:dev": "npm-run-all -p start:server build:dev",
+        "start:server": "nodemon ./build/app.bundle.js",
+        "build:dev": "webpack --progress --color",
+        "build:prod": "webpack --config webpack.prod.config.js --progress --color",
+        "heroku-postbuild": "webpack --config webpack.prod.config.js --progress --color"
+    },
+    "keywords": [
+        "rest",
+        "api",
+        "template"
+    ],
+    "author": "Mayank Singla",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "latest",
+        "@babel/preset-env": "latest",
+        "babel-loader": "latest",
+        "nodemon": "latest",
+        "npm-run-all": "latest",
+        "terser-webpack-plugin": "latest",
+        "webpack": "latest",
+        "webpack-cli": "latest",
+        "webpack-node-externals": "latest"
+    },
+    "dependencies": {
+        "compression": "latest",
+        "core-js": "latest",
+        "express": "latest",
+        "express-mongo-sanitize": "latest",
+        "express-rate-limit": "latest",
+        "helmet": "latest",
+        "hpp": "latest",
+        "jsonwebtoken": "latest",
+        "mongoose": "latest",
+        "regenerator-runtime": "latest"
+    }
+}

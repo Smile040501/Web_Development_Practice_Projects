@@ -20,9 +20,18 @@ module.exports = {
             new TerserPlugin({
                 terserOptions: {
                     parse: { ecma: 8 },
-                    compress: { ecma: 5, comparisons: false, inline: 2 },
+                    compress: {
+                        comparisons: false,
+                        drop_console: true,
+                        ecma: 5,
+                        warning: false,
+                    },
                     mangle: { safari10: true },
-                    output: { ecma: 5, comments: false, ascii_only: true },
+                    format: {
+                        ascii_only: true,
+                        comments: false,
+                        ecma: 5,
+                    },
                 },
             }),
         ],

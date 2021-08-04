@@ -29,4 +29,5 @@ const fileUpload = multer({
     fileFilter,
 });
 
+// IMP: Normalize file path using `normalize-path` npm package before storing path to Database
 module.exports = fileUpload;
