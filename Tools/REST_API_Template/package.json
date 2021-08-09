@@ -2,12 +2,12 @@
     "name": "rest-api-template",
     "version": "1.0.0",
     "description": "My template for building REST APIs using Node.js & MongoDB with pre-built MVC architecture, security mechanisms, utilities, middleware, models, and webpack bundling config.",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
         "start": "node ./build/app.bundle.js",
         "start:dev": "npm-run-all -p start:server build:dev",
         "start:server": "nodemon ./build/app.bundle.js",
-        "build:dev": "webpack --progress --color",
+        "build:dev": "webpack --config webpack.config.js --progress --color",
         "build:prod": "webpack --config webpack.prod.config.js --progress --color",
         "heroku-postbuild": "webpack --config webpack.prod.config.js --progress --color"
     },

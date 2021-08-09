@@ -43,4 +43,20 @@ Resource                    |       POST        |       GET         |       PUT 
                             |                   |   with {id}       |   customer {id}   |   customer {id}   |
 -------------------------------------------------------------------------------------------------------------
 
+
+Common HTTP Status Codes:
+
+200 : OK
+201 : Created
+307 : Temporary Redirect
+308 : Permanent Redirect
+400 : Bad Request
+401 : Unauthorized / Unauthenticated / Authentication Failed
+403 : Forbidden (Unlike 401, server knows client identity)
+404 : Not Found
+405 : Method not allowed
+422 : Request was well-formed but was unable to forward due to semantic errors (Ex. input validation)
+429 : Too many Requests
+500 : Internal Server Error
+
 */

@@ -3,6 +3,7 @@ const jsStringEscape = require("js-string-escape");
 const escape = require("escape-html");
 const xss = require("xss");
 
+// Function to sanitize user input through various methods
 module.exports = (data) => {
     data = jsStringEscape(data);
     data = escape(data);

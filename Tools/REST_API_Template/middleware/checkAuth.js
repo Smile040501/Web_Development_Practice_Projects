@@ -1,7 +1,10 @@
+// Middleware to check whether the user is authenticated or not
+// User needs to send JWT token for all protected routes which was sent when user login/singup
 const jwt = require("jsonwebtoken");
 const HttpError = require("../models/httpError");
 
 module.exports = (req, res, next) => {
+    // OPTIONS is a special browser request
     if (req.method === "OPTIONS") {
         return next();
     }

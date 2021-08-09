@@ -1,3 +1,4 @@
+// Middleware to handle image file uploads using multer
 const multer = require("multer");
 const { v4: uuid } = require("uuid");
 
@@ -7,6 +8,7 @@ const MIME_TYPE_MAP = {
     "image/jpg": "jpg",
 };
 
+// Destination where to store the file
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, "uploads/images");
@@ -17,6 +19,7 @@ const fileStorage = multer.diskStorage({
     },
 });
 
+// Which file types to accept
 const fileFilter = (req, file, cb) => {
     const isValid = !!MIME_TYPE_MAP[file.mimetype];
     let error = isValid ? null : new Error("Invalid mime type!");
