@@ -4,3 +4,6 @@
 [submodule "NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)/node-shop-app"]
 	path = NodeJS - The Complete Guide (MVC, REST APIs, GraphQL, Deno)/node-shop-app
 	url = git@github.com:Smile040501/node-shop-app.git
+[submodule "Progressive Web Apps (PWA) - The Complete Guide/pwagram"]
+	path = Progressive Web Apps (PWA) - The Complete Guide/pwagram
+	url = git@github.com:Smile040501/pwagram.git
