@@ -38,7 +38,7 @@ v14.17.4
 Start with cloning this repo on your local machine, copying this template folder to destination folder and installing dependencies.
 
 ```sh
-$ git clone https://github.com/Smile040501/Web_Development_Practice_Projects.git
+$ git clone git@github.com:Smile040501/Web_Development_Practice_Projects.git
 
 $ cp -r Web_Development_Practice_Projects/Tools/REST_API_Template/ <destination_path>
 
