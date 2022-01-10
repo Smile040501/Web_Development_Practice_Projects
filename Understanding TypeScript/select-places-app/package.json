@@ -1,0 +1,30 @@
+{
+    "name": "understanding-typescript",
+    "version": "1.0.0",
+    "description": "Understanding TypeScript Course Setup",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "webpack serve",
+        "watch": "webpack --watch",
+        "build": "webpack --config webpack.prod.config.js --progress --color",
+        "build:dev": "webpack --config webpack.config.js --progress --color"
+    },
+    "keywords": [
+        "typescript",
+        "course"
+    ],
+    "author": "Mayank Singla",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/google.maps": "^3.47.2",
+        "ts-loader": "^9.2.6",
+        "typescript": "^4.5.4",
+        "webpack": "^5.65.0",
+        "webpack-cli": "^4.9.1",
+        "webpack-dev-server": "^4.7.2"
+    },
+    "dependencies": {
+        "axios": "^0.24.0"
+    }
+}
