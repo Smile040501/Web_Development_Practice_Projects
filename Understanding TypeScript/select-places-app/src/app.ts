@@ -1,5 +1,3 @@
-/// <reference types="@types/google.maps" />
-
 import axios from "axios";
 
 const form = document.querySelector("form")!;
