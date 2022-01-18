@@ -5,6 +5,7 @@ All the projects I made while learning Full Stack Web Development.
 ## Courses
 
 -   [Advanced CSS and Sass](https://www.udemy.com/course/advanced-css-and-sass/)
+-   [Build a Complete App with GraphQL, Node.js, MongoDB and React.js](https://www.youtube.com/watch?v=7gizgfdgnkc&list=pl55riy5tl51rg1x02yyj93iypuuhyxcb_)
 -   [Implement High Fidelity Designs with Material-UI and ReactJS](https://www.udemy.com/course/implement-high-fidelity-designs-with-material-ui-and-reactjs/)
 -   [MERN Stack Front To Back: Full Stack React, Redux & Node.js](https://www.udemy.com/course/mern-stack-front-to-back/)
 -   [Modern React with Redux](https://www.udemy.com/course/react-redux/)

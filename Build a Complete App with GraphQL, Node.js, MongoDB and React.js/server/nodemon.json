@@ -1,0 +1,9 @@
+{
+    "env": {
+        "MONGO_USER": "",
+        "MONGO_PASSWORD": "",
+        "MONGO_DB": "events-react-dev-graphql",
+        "JWT_KEY": "somesupersupersupersecretkey"
+    },
+    "watch": ["dist/**"]
+}
